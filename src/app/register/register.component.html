@@ -1,0 +1,74 @@
+<div class="card">  
+    <div class="card-body">  
+      <form [formGroup]="angForm" novalidate>  
+        <div class="form-group">  
+          <label class="col-md-4">First Name</label>  
+          <input [(ngModel)]="FirstName" class="form-control" formControlName="FirstName" required>  
+        </div>  
+        <div *ngIf="angForm.controls['FirstName'].invalid && (angForm.controls['FirstName'].dirty || angForm.controls['FirstName'].touched)" class="alert alert-danger">  
+          <div *ngIf="angForm.controls['FirstName'].errors!.required">  
+            First Name is required.  
+          </div>  
+        </div>  
+        <div class="form-group">  
+          <label class="col-md-4">Last Name </label>  
+          <input [(ngModel)] = "LastName" class="form-control" formControlName="LastName" required/>
+        </div>  
+        <div *ngIf="angForm.controls['LastName'].invalid && (angForm.controls['LastName'].dirty || angForm.controls['LastName'].touched)" class="alert alert-danger">  
+          <div *ngIf="angForm.controls['LastName'].errors!.required">  
+            Last Name is required.  
+          </div>  
+        </div>  
+        <div class="form-group">  
+          <label class="col-md-4">Email</label>  
+          <input [(ngModel)] = "Email" class="form-control" formControlName="Email" required/>  
+        </div>  
+        <div *ngIf="angForm.controls['Email'].invalid && (angForm.controls['Email'].dirty || angForm.controls['Email'].touched)" class="alert alert-danger">  
+          <div *ngIf="angForm.controls['Email'].errors!.required">  
+            Email is required.  
+          </div>  
+        </div>  
+        <div class="form-group">  
+            <label class="col-md-4">Password</label>  
+            <input type="password" [(ngModel)] = "Password" class="form-control" formControlName="Password"/>  
+          </div>  
+          <div *ngIf="angForm.controls['Password'].invalid && (angForm.controls['Password'].dirty || angForm.controls['Password'].touched)" class="alert alert-danger">  
+            <div *ngIf="angForm.controls['Password'].errors!.required">  
+              Password is required.  
+            </div>  
+          </div>  
+          <div class="form-group">  
+            <label class="col-md-4">Confirm Password</label>  
+            <input type="password" [(ngModel)] = "ConfirmPassword" class="form-control" formControlName="ConfirmPassword" />  
+          </div>  
+          <div *ngIf="angForm.controls['ConfirmPassword'].invalid && (angForm.controls['ConfirmPassword'].dirty || angForm.controls['ConfirmPassword'].touched)" class="alert alert-danger">  
+            <div *ngIf="angForm.controls['ConfirmPassword'].errors!.required">  
+              Confirm password is required.  
+            </div>  
+          </div>  
+        <div class="form-group">  
+          <button (click)="Register()" type="submit" class="btn btn-primary"  
+          [disabled]="angForm.pristine || angForm.invalid" >  
+            Register User  
+          </button>  
+        </div>  
+
+        <table class = 'table table-striped'>
+          <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of personArray">
+            <td> {{ user.FirstName }} </td>
+            <td> {{ user.LastName }} </td>
+            <td> {{ user.Email }} </td>
+          </tr>
+        </tbody>
+      </table>
+      </form>  
+    </div>  
+  </div>  
